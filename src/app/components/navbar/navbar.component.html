@@ -1,0 +1,55 @@
+
+
+<nav class="row navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    
+    <div class="container-fluid">
+        <ul class="navbar-nav" id="navbarSupportedContent">
+            <li class="nav-item">
+              <a class="navbar-logo" href="https://www.argentina.gob.ar/produccion/argentina-programa/segunda-etapa">
+                  <img src="../../../assets/APLogo-20-20.png" alt="Argentina Programa #YoProgramo" id="logo" >
+              </a>
+            </li>
+        </ul>
+        <a class="navbar-brand" href="#">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <ul class="navbar-nav" class="collapse navbar-collapse" id="navbarNav" >
+            <li class="nav-item">
+                <a class="nav-link" href="#start" aria-current="page">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#about">Sobre mí</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#experience">Experiencia</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#education">Educación</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#skills">Skills</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#projects">Proyectos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#contact">Contacto</a>
+            </li>
+        </ul>
+        <a class="nav-link" [href]="social.github">
+            <img src="../../../assets/githubLogo2.png" alt="GitHub" class="icon">
+        </a>
+        <a class="nav-link" [href]="social.linkedin">
+            <img src="../../../assets/linkedinLogo2.png" alt="LinkedIn" class="icon">
+        </a>
+
+
+        <a *ngIf="!authService.loggedIn()" class="btn btn-outline-warning " href="/login">Iniciar sesión</a>
+        <button *ngIf="authService.loggedIn()" class="btn btn-outline-danger " (click)="onLogout()" href="/login">Cerrar sesión</button>
+
+    </div>  
+</nav>
+
+

@@ -1,0 +1,26 @@
+
+<div class="section row" id="login">
+    <form [formGroup]="form" class="card card-mat col-6 offset-3" (ngSubmit)="onEnviar($event)">
+        <div class="form-title">
+            <h1>Iniciar sesión</h1>
+        </div>
+        <div class="form-email">
+            <label for="InputEmail" class="form-label">Email: </label>
+            <input type="email" class="form-control" [ngClass]="form.controls['email'].valid?'is-valid':'is-invalid'" formControlName="email" placeholder="Ingrese su email">
+            <small *ngIf="form.controls['email'].invalid" class="form-text text-muted"></small>
+        </div>
+        <div class="form-password">
+            <label for="InputPassword" class="form-label">Contraseña: </label>
+            <input type="password" class="form-control" [ngClass]="form.controls['password'].valid?'is-valid':'is-invalid'" formControlName="password" placeholder="Ingrese su contraseña">
+        </div>
+        <div class="row">
+            <div class="submit-button col">
+                <button type="submit" class="btn" [ngClass]="form.valid==true? 'btn-outline-success' : 'disabled btn-danger'">Iniciar Sesión</button>
+            </div> 
+            <div class="back-button col">
+                <a href="/" class="btn btn-outline-primary">Volver al Portfolio</a>
+            </div>
+        </div>   
+               
+    </form>
+</div>

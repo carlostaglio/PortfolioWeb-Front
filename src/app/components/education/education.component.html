@@ -1,0 +1,19 @@
+<div class="section row" id="education">
+    <div class="row">
+        <div class="col-8">
+            <h1>Educación</h1>
+        </div>
+        <div *ngIf="authService.loggedIn()" class="col-4">
+            <button class="btn btn-md" (click)="onclick()" [ngClass]="showAddEducation==true? 'btn-outline-danger' : 'btn-outline-success'">{{showAddEducation? 'Cerrar' : 'Agregar'}}</button>
+        </div>
+    </div>
+    <app-education-add *ngIf="showAddEducation" (onAddEducation)="addEducation($event)"> </app-education-add>
+    <div class="col">
+        <ul>
+            <li class="row" *ngFor="let education of educationList">
+                <app-education-item [education]="education" (onDeleteEducation)="deleteEducation($event)" (onEditEducation)="editEducation(education)"></app-education-item>
+            </li>
+
+        </ul>
+    </div> 
+</div>

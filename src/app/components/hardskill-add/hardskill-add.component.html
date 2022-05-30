@@ -1,0 +1,24 @@
+
+
+<div class="row" id="hardskill-add">
+    <form [formGroup]="form" class="card card-mat" (ngSubmit)="onEnviar()">
+        <div class="form-name">
+            <label for="InputName" class="form-label">Nombre de la habilidad dura: </label>
+            <input type="name" class="form-control" [ngClass]="form.controls['nombre'].valid?'is-valid':'is-invalid'" formControlName="nombre" placeholder="Ingrese el nombre de la habilidad dura">
+            <small *ngIf="form.controls['nombre'].invalid" class="form-text text-muted">Debe contener entre 1 y 30 caracteres</small>
+        </div>
+        <div class="form-percentage">
+            <label for="InputPercentage" class="form-label">Porcentaje: </label>
+            <input type="number" class="form-control" [ngClass]="form.controls['porcentaje'].valid?'is-valid':'is-invalid'" formControlName="porcentaje" placeholder="Ingrese un porcentaje estimado de la habilidad">
+            <small *ngIf="form.controls['porcentaje'].invalid" class="form-text text-muted">Debe ser un número entre 0 y 100</small>
+        </div>
+        <div class="form-urlImagen">
+            <label for="InputUrlImagen" class="form-label">Url Imagen: </label>
+            <input type="urlImagen" class="form-control" [ngClass]="form.controls['urlImagen'].valid?'is-valid':'is-invalid'" formControlName="urlImagen" placeholder="Ingrese la dirección de una imagen">
+            <small *ngIf="form.controls['urlImagen'].invalid" class="form-text text-muted">Debe contener entre 1 y 150 caracteres</small>
+        </div>
+        <div class="button">
+            <button type="submit" class="btn" [ngClass]="form.valid==true? 'btn-outline-success' : 'disabled btn-danger'">Guardar</button>
+        </div>        
+    </form>
+</div>

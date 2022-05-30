@@ -1,0 +1,20 @@
+
+<div class="section row" id="projects">
+    <div class="row">
+        <div class="col-8">
+            <h1>Proyectos</h1>
+        </div>
+        <div *ngIf="authService.loggedIn()" class="col-4">
+            <button class="btn btn-md" (click)="onclick()" [ngClass]="showAddProject==true? 'btn-outline-danger' : 'btn-outline-success'">{{showAddProject? 'Cerrar' : 'Agregar'}}</button>
+        </div>
+    </div>
+    <app-projects-add *ngIf="showAddProject" (onAddProject)="addProject($event)"></app-projects-add>
+    <div class="col">
+        <ul>
+            <li class="row" *ngFor="let project of projectList">
+                <app-projects-item [project]="project" (onDeleteProject)="deleteProject($event)" (onEditProject)="editProject(project)"></app-projects-item>
+            </li>
+        </ul>
+    </div> 
+</div>
+

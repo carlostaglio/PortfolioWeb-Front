@@ -1,0 +1,56 @@
+<div *ngIf="!showEditHardskill" class="hardskill">
+    <h5>{{hardskill.nombre}}</h5>
+    <circle-progress
+    [percent]="hardskill.porcentaje"
+    [radius]="80"
+    [outerStrokeWidth]="8"
+    [innerStrokeWidth]="4"
+    [outerStrokeColor]="'#ffc107'"
+    [innerStrokeColor]="'#212529'"
+    [showTitle]="false"
+    [showSubtitle]="false"
+    [showUnits]="false"
+    [imageSrc]="hardskill.urlImagen"
+    [imageHeight]="90"
+    [imageWidth]="90"
+    [showImage]="true"
+    [animation]="true"
+    [animationDuration]="600"
+    [responsive]="true"
+    ></circle-progress>
+    <div *ngIf="authService.loggedIn()">
+      <button class="btn btn-int btn-outline-danger btn-sm" (click)="onDeleteClick()">Eliminar</button>
+      <button class="btn btn-int btn-outline-primary btn-sm" (click)="onEditToggle()">Editar</button>
+    </div>
+</div>
+
+<div *ngIf="showEditHardskill" class="row hardskill-item">
+  <div class="row" id="hardskill-edit">
+    <form [formGroup]="form" (ngSubmit)="onEditSave()">
+        <div class="form-name">
+            <label for="InputName" class="form-label">Nombre de la habilidad dura: </label>
+            <textarea type="name" class="form-control" [ngClass]="form.controls['nombre'].valid?'is-valid':'is-invalid'" formControlName="nombre" placeholder="Ingrese el nombre de la habilidad dura" ></textarea>
+            <small *ngIf="form.controls['nombre'].invalid" class="form-text text-muted">Debe contener entre 1 y 30 caracteres</small>
+        </div>
+        <div class="form-percentage">
+            <label for="InputPercentage" class="form-label">Porcentaje: </label>
+            <textarea type="number" class="form-control" [ngClass]="form.controls['porcentaje'].valid?'is-valid':'is-invalid'" formControlName="porcentaje" placeholder="Ingrese un porcentaje estimado de la habilidad"></textarea>
+            <small *ngIf="form.controls['porcentaje'].invalid" class="form-text text-muted">Debe ser un número entre 0 y 100</small>
+        </div>
+        <div class="form-urlImagen">
+            <label for="InputUrlImagen" class="form-label">Url Imagen: </label>
+            <textarea type="urlImagen" class="form-control" [ngClass]="form.controls['urlImagen'].valid?'is-valid':'is-invalid'" formControlName="urlImagen" placeholder="Ingrese la dirección de una imagen"></textarea>
+            <small *ngIf="form.controls['urlImagen'].invalid" class="form-text text-muted">Debe contener entre 1 y 150 caracteres</small>
+        </div>
+        <div class="row">
+            <div class="col button">
+                <button type="submit" class="btn" [ngClass]="form.valid==true? 'btn-outline-success' : 'disabled btn-danger'">Guardar</button>
+            </div>     
+            <div class="col">
+                <button class="btn btn-outline-danger" (click)="onEditToggle()">Cancelar</button>
+            </div>  
+        </div>
+         
+    </form>
+  </div>
+</div>

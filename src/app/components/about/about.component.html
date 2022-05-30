@@ -1,0 +1,63 @@
+<div *ngIf="!showEditPersona" class="section row" id="about">
+
+    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 profilePicture">
+        <img [src]="persona.urlFoto" alt="Foto" class="img-fluid">
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+        <h4 id="name">{{persona.nombre}} {{persona.apellido}}</h4>
+        <h6>{{persona.titulo}}</h6>
+    </div>
+    <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 description">
+        <h2>Sobre mí</h2>
+        <p>{{persona.sobreMi}}
+        </p>
+    </div>
+    <div *ngIf="authService.loggedIn()" class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+        <button class="btn btn-outline-primary btn-sm" (click)="onEditToggle()">Editar</button>
+    </div>
+
+    
+</div>
+ 
+
+<div *ngIf="showEditPersona" class="section row about-edit" id="about">
+
+    <form [formGroup]="form" (ngSubmit)="onEditSave()">
+        <div class="row">
+            <div class="col form-name">
+                <label for="InputName" class="form-label">Nombre: </label>
+                <input type="name" class="form-control" [ngClass]="form.controls['nombre'].valid?'is-valid':'is-invalid'" formControlName="nombre" placeholder="Ingrese su nombre">
+                <small *ngIf="form.controls['nombre'].invalid" class="form-text text-muted">Debe contener entre 1 y 20 caracteres</small>
+            </div>
+            <div class="col form-lastName">
+                <label for="InputLastName" class="form-label">Apellido: </label>
+                <input type="lastName" class="form-control" [ngClass]="form.controls['apellido'].valid?'is-valid':'is-invalid'" formControlName="apellido" placeholder="Ingrese su apellido">
+                <small *ngIf="form.controls['apellido'].invalid" class="form-text text-muted">Debe contener entre 1 y 20 caracteres</small>
+            </div>
+        </div>
+        <div class="form-title">
+            <label for="Inputtitle" class="form-label">Título: </label>
+            <input type="title" class="form-control" [ngClass]="form.controls['titulo'].valid?'is-valid':'is-invalid'" formControlName="titulo" placeholder="Ingrese su título">
+            <small *ngIf="form.controls['titulo'].invalid" class="form-text text-muted">Debe contener entre 1 y 40 caracteres</small>
+        </div>
+        <div class="form-about">
+            <label for="InputAbout" class="form-label">Sobre mí: </label>
+            <textarea type="about" class="form-control" [ngClass]="form.controls['sobreMi'].valid?'is-valid':'is-invalid'" formControlName="sobreMi" placeholder="Ingrese una descripción breve sobre usted"></textarea>
+            <small *ngIf="form.controls['sobreMi'].invalid" class="form-text text-muted">Debe contener entre 1 y 250 caracteres</small>
+        </div>
+        <div class="form-urlFoto">
+            <label for="InputUrlFoto" class="form-label">Url de su foto: </label>
+            <input type="urlFoto" class="form-control" [ngClass]="form.controls['urlFoto'].valid?'is-valid':'is-invalid'" formControlName="urlFoto" placeholder="Ingrese la dirección de su foto">
+            <small *ngIf="form.controls['urlFoto'].invalid" class="form-text text-muted">Debe contener entre 1 y 150 caracteres</small>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button type="submit" class="btn" [ngClass]="form.valid==true? 'btn-outline-success' : 'disabled btn-danger'">Guardar</button>
+            </div>
+            <div class="col">
+                <button class="btn btn-outline-danger" (click)="onEditToggle()">Cancelar</button>
+            </div>
+        </div>        
+               
+    </form>
+</div> 

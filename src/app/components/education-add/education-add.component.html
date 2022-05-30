@@ -1,0 +1,34 @@
+
+<div class="row" id="education-add">
+    <form [formGroup]="form" class="card card-mat" (ngSubmit)="onEnviar()">
+        <div class="form-name">
+            <label for="InputName" class="form-label">Nombre del curso: </label>
+            <input type="name" class="form-control" [ngClass]="form.controls['nombre'].valid?'is-valid':'is-invalid'" formControlName="nombre" placeholder="Ingrese el nombre del curso o carrera">
+            <small *ngIf="form.controls['nombre'].invalid" class="form-text text-muted">Debe contener entre 1 y 60 caracteres</small>
+        </div>
+        <div class="form-anioInicio">
+            <label for="InputAnioInicio" class="form-label">Año de inicio: </label>
+            <input type="number" class="form-control" [ngClass]="form.controls['anioInicio'].valid?'is-valid':'is-invalid'" formControlName="anioInicio" placeholder="Ingrese el año de inicio del curso o carrera">
+            <small *ngIf="form.controls['anioInicio'].invalid" class="form-text text-muted">Debe ser un número entre 1960 y el presente año</small>
+        </div>
+        <div class="form-anioFin">
+            <label for="InputAnioFin" class="form-label">Año de finalización: </label>
+            <input type="number" class="form-control" [ngClass]="form.controls['anioFin'].valid?'is-valid':'is-invalid'" formControlName="anioFin" placeholder="Ingrese el año de finalización del curso o carrera">
+            <small *ngIf="form.controls['anioFin'].invalid" class="form-text text-muted">Debe ser un número mayor al año de inicio y menor a 2050. </small>
+            <small class="form-text text-muted">Si se encuentra actualmente en curso, coloque un año posterior al actual</small>
+        </div>
+        <div class="form-description">
+            <label for="InputDescription" class="form-label">Descripción: </label>
+            <textarea type="description" class="form-control" [ngClass]="form.controls['descripcion'].valid?'is-valid':'is-invalid'" formControlName="descripcion" placeholder="Ingrese una descripción del curso o carrera"></textarea>
+            <small *ngIf="form.controls['descripcion'].invalid" class="form-text text-muted">Debe contener entre 1 y 250 caracteres</small>
+        </div>
+        <div class="form-urlImagen">
+            <label for="InputUrlImagen" class="form-label">Url Imagen: </label>
+            <input type="url" class="form-control" [ngClass]="form.controls['urlImagen'].valid?'is-valid':'is-invalid'" formControlName="urlImagen" placeholder="Ingrese la dirección de una imagen">
+            <small *ngIf="form.controls['urlImagen'].invalid" class="form-text text-muted">Debe contener entre 1 y 150 caracteres</small>
+        </div>
+        <div class="button">
+            <button type="submit" class="btn" [ngClass]="form.valid==true? 'btn-outline-success' : 'disabled btn-danger'">Guardar</button>
+        </div>        
+    </form>
+</div>

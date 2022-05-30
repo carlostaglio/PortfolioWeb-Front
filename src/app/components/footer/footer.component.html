@@ -1,0 +1,61 @@
+
+<footer class="section row bg-dark text-center text-white" id="contact">
+  <div *ngIf="!showEditSocial">
+    <div class="mb-4">
+      <p>
+        Contacto
+      </p>
+    </div>
+    <div  *ngIf="authService.loggedIn()" class="btn">
+      <button class="btn btn-outline-primary btn-sm" (click)="onEditToggle()">Editar</button>
+    </div>
+    <div class="mb-4">
+      <a href="mailto:{{social.correo}} ">{{social.correo}} </a>
+      <a class="nav-link" [href]="social.github">
+        <img src="../../../assets/githubLogo2.png" alt="GitHub" class="icon">
+      </a>
+      <a class="nav-link" [href]="social.linkedin">
+        <img src="../../../assets/linkedinLogo2.png" alt="LinkedIn" class="icon">
+      </a>
+    </div>
+
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        Carlos Taglioretti - Portfolio web
+    </div>
+  </div>
+    
+
+  <div *ngIf="showEditSocial" class="section row social-edit">
+
+      <form [formGroup]="form" (ngSubmit)="onEditSave()">
+          
+          <div class="form-email">
+            <label for="InputEmail" class="form-label">Email: </label>
+            <input type="email" class="form-control" [ngClass]="form.controls['correo'].valid?'is-valid':'is-invalid'" formControlName="correo" placeholder="Ingrese la dirección de email">
+            <small *ngIf="form.controls['correo'].invalid" class="form-text text-muted">Debe contener entre 1 y 50 caracteres</small>
+          </div>
+          <div class="form-github">
+              <label for="InputGithub" class="form-label">Url de su GitHub: </label>
+              <input type="url" class="form-control" [ngClass]="form.controls['github'].valid?'is-valid':'is-invalid'" formControlName="github" placeholder="Ingrese la dirección de su GitHub">
+              <small *ngIf="form.controls['github'].invalid" class="form-text text-muted">Debe contener entre 1 y 100 caracteres</small>
+          </div>
+          <div class="form-linkedin">
+            <label for="InputLinkedin" class="form-label">Url de su LinkedIn: </label>
+            <input type="url" class="form-control" [ngClass]="form.controls['linkedin'].valid?'is-valid':'is-invalid'" formControlName="linkedin" placeholder="Ingrese la dirección de su LinkedIn">
+            <small *ngIf="form.controls['linkedin'].invalid" class="form-text text-muted">Debe contener entre 1 y 100 caracteres</small>
+          </div>
+          
+          <div class="row">
+              <div class="col">
+                  <button type="submit" class="btn" [ngClass]="form.valid==true? 'btn-outline-success' : 'disabled btn-danger'">Guardar</button>
+              </div>
+              <div class="col">
+                  <button class="btn btn-outline-danger" (click)="onEditToggle()">Cancelar</button>
+              </div>
+          </div>        
+                 
+      </form>
+
+  </div> 
+    
+</footer>

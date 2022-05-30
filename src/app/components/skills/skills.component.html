@@ -1,0 +1,38 @@
+<div class="section row d-flex justify-content-center" id="skills">
+  
+  <div id="HardSkills">
+    <div class="row">
+      <div class="col-8">
+          <h1>Hard Skills</h1>
+      </div>
+      <div *ngIf="authService.loggedIn()" class="col-4">
+          <button class="btn btn-md" (click)="onclickHardskill()" [ngClass]="showAddHardskill==true? 'btn-outline-danger' : 'btn-outline-success'">{{showAddHardskill? 'Cerrar' : 'Agregar'}}</button>
+      </div>
+    </div>
+    <app-hardskill-add *ngIf="showAddHardskill" (onAddHardskill)="addHardskill($event)"></app-hardskill-add>
+    <div class="row">
+      <div class="skill col-xs-12 col-sm-6 col-md-4 col-lg-4" *ngFor="let hardskill of hardskillList">
+        <app-hardskill-item [hardskill]="hardskill" (onDeleteHardskill)="deleteHardskill($event)" (onEditHardskill)="editHardskill(hardskill)"></app-hardskill-item>
+      </div>
+    </div>
+  </div>
+  
+  <div id="SoftSkills">
+    <div class="row">
+      <div class="col-8">
+          <h1>Soft Skills</h1>
+      </div>
+      <div *ngIf="authService.loggedIn()" class="col-4">
+          <button class="btn btn-md" (click)="onclickSoftskill()" [ngClass]="showAddSoftskill==true? 'btn-outline-danger' : 'btn-outline-success'">{{showAddSoftskill? 'Cerrar' : 'Agregar'}}</button>
+      </div>
+    </div>
+    <app-softskill-add *ngIf="showAddSoftskill" (onAddSoftskill)="addSoftskill($event)"></app-softskill-add>
+    <div class="row">
+      <div class="skill col-xs-12 col-sm-6 col-md-4 col-lg-4" *ngFor="let softskill of softskillList">
+        <app-softskill-item [softskill]="softskill" (onDeleteSoftskill)="deleteSoftskill($event)" (onEditSoftskill)="editSoftskill(softskill)"></app-softskill-item>
+      </div>
+            
+    </div>
+  </div>
+     
+</div>

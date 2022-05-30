@@ -1,0 +1,112 @@
+ul {
+    list-style-type: none;
+}
+
+/* navbar */
+#logo {
+    height: 70px;
+}
+
+.navbar .nav-link {
+    color:white;
+}
+
+/* for every section (navbar and footer not included) */
+.section {
+    padding-top:100px;
+    padding-bottom:100px;
+    padding-left:50px;
+    padding-right: 50px;
+    color:white;
+}
+
+.section .btn {
+    width: 100px;
+}
+
+.section .btn-int {
+    margin-top:30px;
+    margin-left:10px;
+}
+
+/* about */
+#about {
+    text-align:center;
+    background-color:#423F3E; 
+}
+#name {
+    margin-top:30px;
+    font-weight:bold;
+}
+
+/* education and experience*/
+#education {
+    background-color:#2B2B2B;
+}
+
+#experience {
+    background-color:#082032;
+}
+
+h2,h3 {
+    display: inline;
+}
+.section li {
+    padding:30px;
+}
+
+/* projects */
+#projects{
+    background-color: rgb(61, 61, 61);
+}
+
+/* skills */
+#skills {
+    background-color:#334756;
+}
+
+#SoftSkills {
+    padding-top: 80px;
+}
+
+.skill {
+    text-align: center;
+    padding:30px;
+}
+
+/* login */
+#login {
+    background-color: #334756;
+}
+
+#login div {
+    padding: 20px;
+}
+
+.back-button {
+    align-self: center;
+}
+
+
+/* footer */
+#contact {
+    background-color: #334756;
+}
+
+.icon {
+    height: 30px;  
+    margin-left: 5px; 
+}
+div.mb-4 a {
+    display: inline;
+    color:white;
+}
+
+/* element-add components and login */
+div .card-mat {
+    background-color: #212529;
+    padding:30px;
+}
+div .card-mat div {
+    padding:10px;
+}

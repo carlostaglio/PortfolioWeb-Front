@@ -1,0 +1,18 @@
+<div class="section row" id="experience">
+    <div class="row">
+        <div class="col-8">
+            <h1>Experiencia Laboral</h1>
+        </div>
+        <div *ngIf="authService.loggedIn()" class="col-4">
+            <button class="btn btn-md" (click)="onclick()" [ngClass]="showAddExperience==true? 'btn-outline-danger' : 'btn-outline-success'">{{showAddExperience? 'Cerrar' : 'Agregar'}}</button>
+        </div>
+    </div>
+    <app-experience-add *ngIf="showAddExperience" (onAddExperience)="addExperience($event)"></app-experience-add>
+    <div>
+        <ul>
+            <li class="row" *ngFor="let experience of experienceList">
+                <app-experience-item [experience]="experience" (onDeleteExperience)="deleteExperience($event)" (onEditExperience)="editExperience(experience)"></app-experience-item>
+            </li>
+        </ul>
+    </div>
+</div>
